@@ -1,5 +1,16 @@
 # @bpmnkit/core
 
+## 1.6.0
+
+### Minor Changes
+
+- fbd45f8: The process-text format reads and writes what an AI Agent chat needs: `form=<id>` on start and user nodes, `in.<name>=` and `out.<name>=` mappings, `# Name | camunda=8.10` for the target platform, `adhoc` containers with `inside=` tools, `note <id>: text` annotations and `doc <id>: text` documentation (an agent tool's description). A mapping value stops at a following `|` or `,`, a title tail that is not `camunda=…` stays in the name, and an unknown `inside=` resolves to the only ad-hoc sub-process. `compactify` keeps node outputs, a connector's `\n` in a `==` value is a line break, and `patchElement` sets form, mapping and documentation fields.
+
+### Patch Changes
+
+- 8bcc25a: `PROCESS_TEXT_GUIDE` lists the `adhoc` kind and gains a short example of an agent with a documented tool and a note.
+- fbd45f8: `pattern/gateway-no-default-flow` and `pattern/subprocess-no-error-boundary` report warnings instead of errors. Camunda's own reference diagrams trip both and its lint gate does not flag them, so a correct model now passes `--profile deploy` with 0 errors.
+
 ## 1.5.0
 
 ### Minor Changes
